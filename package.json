@@ -3,9 +3,9 @@
   "displayName": "SpecTec Highlight",
   "description": "Syntax highlight for SpecTec DSL",
   "publisher": "taichimaeda2",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "engines": {
-    "vscode": "^1.100.0"
+    "vscode": ">=0.10.5"
   },
   "categories": [
     "Programming Languages"
