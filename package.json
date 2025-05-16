@@ -3,7 +3,8 @@
   "displayName": "SpecTec Highlight",
   "description": "Syntax highlight for SpecTec DSL",
   "publisher": "taichimaeda2",
-  "version": "0.0.2",
+  "version": "0.0.3",
+  "icon": "icon.png",
   "engines": {
     "vscode": ">=0.10.5"
   },
