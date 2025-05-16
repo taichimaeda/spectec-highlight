@@ -1,0 +1,150 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "SpecTec",
+	"patterns": [
+		{ "include": "#comments" },
+		{ "include": "#keywords" },
+		{ "include": "#constants" },
+		{ "include": "#identifiers" },
+		{ "include": "#operators" }
+	],
+	"repository": {
+		"comments": {
+			"patterns": [
+				{
+					"name": "comment.block.spectec",
+					"begin": "\\(;",
+					"end": ";\\)"
+				},
+				{
+					"name": "comment.line.spectec",
+					"match": ";;.*$"
+				}
+			]
+		},
+		"keywords": {
+			"patterns": [
+				{
+					"name": "keyword.control.spectec",
+					"match": "\\b(var|syntax|relation|rule|if|otherwise|def|grammar)\\b"
+				},
+				{
+					"begin": "\\b(hint)\\(([a-zA-Z0-9]+)",
+					"end": "\\)",
+					"beginCaptures": {
+						"1": {
+							"name": "storage.modifier.spectec"
+						},
+						"2": {
+							"name": "constant.language.spectec"
+						}
+					},
+					"patterns": [
+						{ "include": "#constants" },
+						{ "include": "#identifiers" },
+						{ "include": "#operators" }
+					]
+				},
+				{
+					"name": "storage.type.spectec",
+					"match": "\\b(nat|int|rat|real|bool|text)\\b"
+				}
+			]
+		},
+		"constants": {
+			"patterns": [
+				{
+					"name": "constant.numeric.spectec",
+					"match": "\\b(\\d+|0x[0-9A-F]+|U\\+[0-9A-F]+|`\\d+)\\b"
+				},
+				{
+					"name": "constant.language.spectec",
+					"match": "\\b(true|false|eps)\\b"
+				},
+				{
+					"name": "string.quoted.double.spectec",
+					"begin": "\"",
+					"end": "\"",
+					"patterns": [
+						{
+							"name": "constant.character.escape.spectec",
+							"match": "\\\\."
+						}
+					]
+				}
+			]
+		},
+		"identifiers": {
+			"patterns": [
+				{
+					"name": "constant.character.spectec",
+					"match": "\\b([A-Z]|`[a-z]|_)[A-Z0-9_\\.']*\\b"
+				},
+				{
+					"name": "entity.name.function.spectec",
+					"match": "\\$(([A-Z]|`[a-z]|_)[A-Z0-9_\\.']*|([a-z]|`[A-Z]|`_)[a-z0-9_']*)\\b"
+				},
+				{
+					"name": "entity.name.type.spectec",
+					"match": "\\b(([A-Z]|`[a-z]|_)[A-Z0-9_\\.']*|([a-z]|`[A-Z]|`_)[a-z0-9_']*)(\\/|-|(([A-Z]|`[a-z]|_)[A-Z0-9_\\.']*|([a-z]|`[A-Z]|`_)[a-z0-9_']*))*\\b"
+				},
+				{
+					"name": "variable.other.spectec",
+					"match": "\\b([a-z]|`[A-Z]|`_)[a-z0-9_']*\\b"
+				},
+				{
+					"name": "constant.language.spectec",
+					"match": "\\binfinity\\b|_\\|_|\\^\\|\\^"
+				},
+				{
+					"name": "keyword.operator.spectec",
+					"match": "\\bin\\b|:|;|\\\\|<:|<<|>>|\\|-|-\\||:=|~~|~~_|->|~>|~>\\*|=>|`\\.\\.\\.|`\\?|`\\+|`\\*|\\(\\/\\\\\\)|\\(\\/\\\\\\)|\\(\\+\\)|\\(\\*\\)|\\(\\+\\+\\)|:_|=_|==_|->_|=>_|~>_|~>\\*_|\\|-_|-\\|_"
+				},
+				{
+					"name": "keyword.operator.spectec",
+					"match": "`\\(|`\\[|`\\{|`\\)|`\\]|`\\}"
+				}
+			]
+		},
+		"operators": {
+			"patterns": [
+				{
+					"name": "keyword.operator.spectec",
+					"match": "~|\\/\\\\|\\\\/|=>|=|=\\/=|<|>|<=|>=|\\+|-|\\*|\\/|\\\\|\\^"
+				},
+				{
+					"name": "keyword.operator.spectec",
+					"match": "\\?|\\*|\\+|\\^"
+				},
+				{
+					"name": "keyword.operator.spectec",
+					"match": "\\+\\+|<-|=\\+\\+"
+				},
+				{
+					"name": "keyword.operator.spectec",
+					"match": "#|##|%|%%|!%|%latex"
+				},
+				{
+					"begin": "\\$((nat|int|rat|real)\\$)?\\(",
+					"end": "\\)",
+					"beginCaptures": {
+						"0": {
+							"name": "keyword.operator.spectec"
+						}
+					},
+					"endCaptures": {
+						"0": {
+							"name": "keyword.operator.spectec"
+						}
+					},
+					"patterns": [
+						{ "include": "#constants" },
+						{ "include": "#identifiers" },
+						{ "include": "#operators" }
+					]
+				}
+			]
+		}
+	},
+	"scopeName": "source.spectec"
+}

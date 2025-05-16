@@ -1,0 +1,25 @@
+{
+  "name": "spectec-highlight",
+  "displayName": "SpecTec Highlight",
+  "description": "",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.100.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "spectec",
+      "aliases": ["SpecTec", "spectec"],
+      "extensions": [".watsup", ".spectec"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "spectec",
+      "scopeName": "source.spectec",
+      "path": "./syntaxes/spectec.tmLanguage.json"
+    }]
+  }
+}
